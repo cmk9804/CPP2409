@@ -28,13 +28,15 @@ string toUpperStr(string str){
 
 int calcHammingDist(string s1, string s2){
     int count = 0;
+    string str1 = toLowerStr(s1);
+    string str2 = toLowerStr(s2);
 
-    if(s1.length() != s2.length()){
+    if(str1.length() != str2.length()){
         cout << "오류: 길이가 다름" << endl;
     }
     else{
-        for(int i = 0; i < s1.length(); i++){
-            if(s1[i] != s2[i]){
+        for(int i = 0; i < str1.length(); i++){
+            if(str1[i] != str2[i]){
                 count += 1;
             }
         }
@@ -46,11 +48,14 @@ int calcHammingDist(string s1, string s2){
 int main(){
     string s1 = "Hello World";
     string s2 = "ASDFG World";
+    string s3 = "ASDFG world";
+
     int count = calcHammingDist(s1, s2);
 
     cout << toLowerStr(s1) << endl;
     cout << toUpperStr(s1) << endl;
     cout << "해밍 거리는: " << count << endl;
+    cout << "해밍 거리는: " << calcHammingDist(s2, s3) << endl;
 
 
     return 0;
