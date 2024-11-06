@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 #include "user.h"
 using namespace std;
 
@@ -8,19 +9,19 @@ const int mapY = 5;
 
 // 사용자 정의 함수
 bool checkXY(int user_x, int mapX, int user_y, int mapY);
-void displayMap(int map[][mapX], int user_x, int user_y);
-bool checkGoal(int map[][mapX], int user_x, int user_y);
-void checkState(int map[][mapX], int user_x, int user_y, User& user);
+void displayMap(vector<vector<int>> map, int user_x, int user_y);
+bool checkGoal(vector<vector<int>> map, int user_x, int user_y);
+void checkState(vector<vector<int>> map, int user_x, int user_y, User& user);
 bool CheckUser(User user);
 
 // 메인  함수
 int main() {
 	// 0은 빈 공간, 1은 아이템, 2는 적, 3은 포션, 4는 목적지
-	int map[mapY][mapX] = { {0, 1, 2, 0, 4},
-							{1, 0, 0, 2, 0},
-							{0, 0, 0, 0, 0},
-							{0, 2, 3, 0, 0},
-							{3, 0, 0, 0, 2} };
+	vector<vector<int>> map = { {0, 1, 2, 0, 4},
+							  	{1, 0, 0, 2, 0},
+							  	{0, 0, 0, 0, 0},
+							  	{0, 2, 3, 0, 0},
+							  	{3, 0, 0, 0, 2} };
 
 
 	// 유저의 위치를 저장할 변수
@@ -45,6 +46,7 @@ int main() {
 			if (inMap == false) {
 				cout << "맵을 벗어났습니다. 다시 돌아갑니다." << endl;
 				user_y += 1;
+				continue;
 			}
 			else {
 				cout << "위로 한 칸 올라갑니다." << endl;
@@ -58,6 +60,7 @@ int main() {
 			if (inMap == false) {
 				cout << "맵을 벗어났습니다. 다시 돌아갑니다." << endl;
 				user_y -= 1;
+				continue;
 			}
 			else {
 				cout << "아래로 한 칸 내려갑니다." << endl;
@@ -72,6 +75,7 @@ int main() {
 			if (inMap == false) {
 				cout << "맵을 벗어났습니다. 다시 돌아갑니다." << endl;
 				user_x += 1;
+				continue;
 			}
 			else {
 				cout << "왼쪽으로 이동합니다." << endl;
@@ -85,6 +89,7 @@ int main() {
 			if (inMap == false) {
 				cout << "맵을 벗어났습니다. 다시 돌아갑니다." << endl;
 				user_x -= 1;
+				continue;
 			}
 			else {
 				cout << "오른쪽으로 이동합니다." << endl;
@@ -130,7 +135,7 @@ int main() {
 
 
 // 지도와 사용자 위치 출력하는 함수
-void displayMap(int map[][mapX], int user_x, int user_y) {
+void displayMap(vector<vector<int>> map, int user_x, int user_y) {
 	for (int i = 0; i < mapY; i++) {
 		for (int j = 0; j < mapX; j++) {
 			if (i == user_y && j == user_x) {
@@ -172,7 +177,7 @@ bool checkXY(int user_x, int mapX, int user_y, int mapY) {
 }
 
 // 유저의 위치가 목적지인지 체크하는 함수
-bool checkGoal(int map[][mapX], int user_x, int user_y) {
+bool checkGoal(vector<vector<int>> map, int user_x, int user_y) {
 	// 목적지 도착하면
 	if (map[user_y][user_x] == 4) {
 		return true;
@@ -180,7 +185,7 @@ bool checkGoal(int map[][mapX], int user_x, int user_y) {
 	return false;
 }
 
-void checkState(int map[][mapX], int user_x, int user_y, User& user){
+void checkState(vector<vector<int>> map, int user_x, int user_y, User& user){
 	//아이템
 	if(map[user_y][user_x] == 1){
 		cout << "아이템이 있습니다." << endl;
