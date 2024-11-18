@@ -36,7 +36,7 @@ int main() {
 		string user_input = "";
 
 		cout << "현재 HP: " << user.GetHP();
-		cout << "  명령어를 입력하세요 (상,하,좌,우,지도,종료): ";
+		cout << "  명령어를 입력하세요 (상,하,좌,우,지도,정보,종료): ";
 		cin >> user_input;
 
 		if (user_input == "상") {
@@ -99,6 +99,10 @@ int main() {
 		else if (user_input == "지도") {
 			// TODO: 지도 보여주기 함수 호출
 			displayMap(map, user_x, user_y);
+			continue;
+		}
+		else if (user_input == "정보") {
+			cout << user << endl;
 			continue;
 		}
 		else if (user_input == "종료") {
@@ -189,6 +193,7 @@ void checkState(vector<vector<int>> map, int user_x, int user_y, User& user){
 	//아이템
 	if(map[user_y][user_x] == 1){
 		cout << "아이템이 있습니다." << endl;
+		user.IncreaseItemCnt();
 	}
 	//적
 	else if(map[user_y][user_x] == 2){
