@@ -2,7 +2,7 @@
 using namespace std;
 
 class User{
-private:
+protected:
     int hp;
     int itemCnt;
 public:
@@ -17,10 +17,12 @@ public:
     friend ostream& operator<<(ostream& os, const User& u);
 };
 
-class Magician : User{
+class Magician : public User{
+public:
     void DoAttack();
-}
+};
 
-class Warrior : User{
+class Warrior : public User{
+public:
     void DoAttack();
-}
+};
