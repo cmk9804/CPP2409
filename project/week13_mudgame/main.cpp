@@ -38,15 +38,24 @@ int main() {
 	//Magician *magi = new Magician();
 	//Warrior *warr = new Warrior();
 
-	string select_class_input = "";
-	cout << "직업을 선택하세요(Magician 또는 Warrior): ";
-	cin >> select_class_input;
-	if(select_class_input == "Magician"){
-		user = new Magician();
+	bool not_available_input = true;
+	while(not_available input){
+		string select_class_input = "";
+		cout << "직업을 선택하세요(Magician 또는 Warrior): ";
+		cin >> select_class_input;
+		if(select_class_input == "Magician"){
+			user = new Magician();
+			not_available_input = false;
+		}
+		else if(select_class_input == "Warrior"){
+			user = new Warrior();
+			not_available_input = false;
+		}
+		else{
+			cout << 다시 입력하세요 << endl;
+		}
 	}
-	else if(select_class_input == "Warrior"){
-		user = new Warrior();
-	}
+	
 
 	// 게임 시작 
 	while (1) { // 사용자에게 계속 입력받기 위해 무한 루프
