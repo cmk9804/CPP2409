@@ -19,7 +19,7 @@ int main(){
     vector<Data> temps;
     int hour;
     double temperature;
-
+    
     while(is >> hour >> temperature){
         temps.push_back(Data{ hour, temperature});
     }
